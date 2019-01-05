@@ -1,1 +1,1 @@
-# gradient-ml-questions
+# Machine Learning Questions from Gradient
