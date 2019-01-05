@@ -1,1 +1,33 @@
 # 머신러닝 모형의 학습 (Training)과 선택 (Selection), 평가 (Assessment)에 대한 다음 물음들에 답하여라.
+
+- 머신러닝, 그 중에서도 지도학습의 목표를 한 문장으로 설명하라. 키워드 : 일반화 (Generalization)
+  - 머신러닝은 컴퓨터가 데이터를 통해 학습할 수 있는 알고리즘을 만드는 과정을 의미한다. 지도학습은 데이터에 맞는 결과값을 학습하여 새로운 데이터가 주어졌을 때 적합한 결과를 도출하는 함수를 찾는 과정이다. 일반화란 훈련 이후 처음 보는 데이터를 처리하는 능력을 향상시키는 것을 의미하는데, 지도학습의 목표는 새로운 데이터에 대한 정확한 결과값을 도출할 수 있는 올바른 함수를 찾는 것이 목표이다.
+- 위 목표에 비추어 볼 때, Empirical Risk Minimization / Hypothesis Space로의 제약 (Restriction) 시 발생할 수 있는 문제에 대해 각각 설명하라.
+- Training Error가 가장 낮은 모형을 선택하는 과정을 무엇이라고 부르는가?
+- Training Error가 가장 낮은 모형을 예측에 사용하면 발생할 수 있는 문제는 무엇인가?
+  - 훈련 데이터에 대한 오류값 (Training Error) 은 낮으나, 그 이외의 일반적인 데이터에 대한 오류값이 높게 나올 수도 있다. 이러한 현상을 과적합 (Over-fitting) 이라고 한다.
+- 위 문제를 해결할 수 있는가?
+  - 모델에 따라 과적합을 해결하는 세부 방법은 다르지만, 일반적으로 정규화 (Regualization) 방법을 사용하여 과적합을 해결한다.
+- Training Set 이외에 Validation Set을 두는 이유는 무엇인가?
+  - Training Error 가 가장 낮은 모델을 선택하여 모델 선택을 끝낼 경우, 해당 모델이 과적합되어 있는지를 판단할 수 없고, 과적합되어 있는 경우에 새로운 데이터에 대해서는 좋은 결과를 도출하지 못할 수도 있다. (Bad Generalization) 따라서, Validation Set을 따로 두어 훈련했던 모델들의 오류값을 다시 한 번 검증하여 과적합된 모델인지 확인해야 한다. Training Error가 낮더라도 Validation Error 가 높다면 그 모델을 선택하면 안된다.
+- Validation Error가 가장 낮은 모형을 선택하는 과정을 무엇이라고 부르는가?
+- Validation Error가 가장 낮은 모형을 예측에 사용하면 발생할 수 있는 문제는 무엇인가?
+- 위 문제를 해결할 수 있는가?
+- Training Error와 Validation Error를 낮추는 모형을 찾는 이유는 무엇인가? 
+- Training Set과 Validation Set을 표준화 (Normalization) 하는 올바른 방법에 대해 논하라.
+- Training Error와 Validation Error가 어떤 Error와 비슷하기를 낙관하는가?
+  - 전혀 보지 못한 (unseen) 데이터에 대한 에러값과 비슷하기를 원함.
+- Training Set과 Validation Set 이외에 Test Set을 두는 이유는 무엇인가?
+  - 모델 학습 (Training) 및 선택 (Selection) 까지 전부 완료한 후, 한번도 보지 못한 데이터에 대해서 에러값을 확인함으로써 일반화가 잘되었는지 최종 판단해야 한다. 이 때 사용되는 데이터가 Test Set이며, Test Set은 모델 학습은 물론 모델의 선택에 있어서도 관여가 되서는 안되며, 최종적으로 사용할 모델이 분명하게 정해졌을 때 이 모델의 일반화 성능을 판단하는 데 사용된다.
+- 머신러닝 모델링의 세 가지 단계, Training / Selection / Assessment에 대해 설명하라. 
+  - Training (훈련) - 후보 모델들을 주어진 훈련 데이터로 학습시킨다.
+  - Selection (선택) - 확보한 Training Set, Validation Set 을 이용해 
+  - Assessment (평가)
+- Test Set이 오염(Corrupt) 되었다는 의미는 무엇인가?
+  - 테스트 셋이 훈련 과정이나 모델 선택 과정에서 사용된 경우, 엄밀한 의미의 새로운 데이터가 아니므로 이러한 경우를 테스트 셋이 오염되었다고 한다.
+- Model Selection에 Test Set을 이용해도 되는가?
+  - 안된다.
+- K-Fold Cross Validation에 대해 설명하라. 이를 사용하는 이유가 무엇이고, 주로 언제 사용하는가?
+  - 훈련과 모델 선택에 사용할 데이터를 찾고, 그 데이터를 랜덤하게 분포하도록 섞은 후, 데이터를 K등분한다. 그리고 (K-1) 개의 데이터를 모델을 훈련하는데 사용 (Training Set) 하고, 1개의 데이터를 모델을 검증하는데 사용 (Validation Set) 한다.  등분된 데이터에 대해서 한번씩 Validation Set처럼 사용하고 나면 모델마다 총 K번의 Training Error, Validation Error를 도출하게 되었을 텐데, 이 에러값들을 평균값을 내어 최종적인 Training Error, Validation Error로 도출한다. 이러한 과정을 K-Fold Cross Validation이라고 한다. 
+  - 더 다양한 데이터를 Training Error, Validation Error로 사용하게 되면서 모델의 일반화를 더 촉구할 수 있다.
+  - 시계열 데이터와 같이 데이터의 순서를 섞을 수 없는 경우를 제외한 나머지 데이터를 처리할 때 사용할 수 있다. 또한, Training Set, Validation Set을 일반화를 보장할 수 있는 수준으로 확보할 수 없는 경우, 즉 데이터가 부족할 때도 유용하게 사용될 수 있다.
