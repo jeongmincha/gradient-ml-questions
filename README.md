@@ -5,3 +5,5 @@
 1. ["머신러닝 모형의 학습 (Training)과 선택 (Selection), 평가 (Assessment)에 대한 다음 물음들에 답하여라." 에 대한 세부 질문 및 대답](https://github.com/jeongmincha/gradient-ml-questions/blob/master/ml-questions-01)
 2. ["과적합 (Overfitting)에 대한 다음 물음들에 대해 답하여라." 에 대한 세부 질문 및 대답](https://github.com/jeongmincha/gradient-ml-questions/tree/master/ml-questions-02)
 3. ["VC 부등식에 대한 다음 물음들에 대해 답하여라."에 대한 세부 질문 및 대답](https://github.com/jeongmincha/gradient-ml-questions/tree/master/ml-questions-03)
+4. ["편향과 분산 (Bias – Variance)에 대한 다음 물음들에 대해 답하여라."에 대한 세부 질문 및 대답]()https://github.com/jeongmincha/gradient-ml-questions/tree/master/ml-questions-04)
+5. ["제약화 (Regularization)에 대한 다음 물음들에 대해 답하여라."에 대한 세부 질문 및 대답](https://github.com/jeongmincha/gradient-ml-questions/tree/master/ml-questions-05)
