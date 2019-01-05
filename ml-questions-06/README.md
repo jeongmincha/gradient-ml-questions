@@ -1,4 +1,4 @@
-# 아래 그래프를 보고 물음에 답하여라. (출처 : [Deep Learning Book](https://www.deeplearningbook.org/))
+# 06. 아래 그래프를 보고 물음에 답하여라. (출처 : [Deep Learning Book](https://www.deeplearningbook.org/))
 
 ![](../images/ml-questions-01-06.png)
 

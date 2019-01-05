@@ -1,4 +1,4 @@
-# 과적합 (Overfitting)에 대한 다음 물음들에 대해 답하여라.
+# 02. 과적합 (Overfitting)에 대한 다음 물음들에 대해 답하여라.
 
 - Overfitting이 발생했다는 의미가 무엇인지 정량적으로 설명하라.
   - 믿을 만한 모델임을 판단하는 기준치를 Error threshold라고 하자. Training Error < Error threshold < Validation Error 인 경우를 Overfitting이 발생했다고 한다.
