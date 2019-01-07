@@ -4,18 +4,42 @@
   - 훈련된 머신러닝 알고리즘의 성능을 평가하기 위해서
   - 다른 모형과 성능을 비교하기 위해서
 - 어떤 Evaluation Metric을 사용할지는 누가 정하는가?
+  - 학습 모형의 종류에 따라 사용해야 할 평가 메트릭은 달라진다.
+    - 지도학습인지, 비지도학습인지
+    - 지도학습이라면 Regression 모델인지, Classification 모델인지
 - 어떤 Evaluation Metric을 사용할지는 Hyperparameter의 일종이라고 할 수 있는가?
+  - 하이퍼 파라미터로 보기 어렵다. 하이퍼 파라미터는 직접 설정하는 대신 변경할 때 모형의 학습 과정에 영향을 주어야 한다. 왜냐하면 설정한 하이퍼 파라미터에 따라서 모형의 표현 (Representation) 이 결정되기 때문이다. evaluation metric 자체가 모형의 학습 모형의 표현에 영향을 주지는 않으므로 하이퍼 파라미터로 보기에는 조금 어렵다고 생각한다.
 - 회귀 문제에서는 어떤 Evaluation Metric들을 사용하는가?
+  - 회귀 모형은 특정한 실수값을 도출하기 때문에, 실제 결과값과 모형에 의한 결과값의 차이를 이용하여 모형을 평가한다. 이러한 평가 메트릭에는 MSE (Mean Squared Error), MAE (Mean Absolute Error), RMSE (Root Mean Squared Error) 등이 포함된다.
 - 이진 분류 문제에서는 어떤 Evaluation Metric들을 사용하는가?
+  - Recall, Precision, (Precision, Recall Curve), ROC Curve, Balanced Accuracy 와 같은 평가 메트릭을 사용한다.
 - 다중 분류 문제에서는 어떤 Evaluation Metric들을 사용하는가?
+  - Cohen Kappa, Confusion Matrix, Hinge Loss, MCC (Matthews correlation coefficient) 와 같은 평가 메트릭을 사용한다.
 - 객체 탐지 문제에서는 어떤 Evaluation Metric을 사용하는지 찾아보아라.
+  - mAP (Mean Average Precision)
 - 기계 번역 문제에서는 어떤 Evaluation Metric을 사용하는지 찾아보아라.
+  - BLEU
 - R Square에 대해 설명하라.
+  - 데이터가 회귀 모형으로 나온 함수와 얼마나 가까운지 표현하는 메트릭이다.
+  - R squred = 1 - (residual sum of squares) / (total sum of squares)
+    - residual sum of squares = sum((each real value - each calculated value)^2)
+    - total sum of squares = sum((each real value - mean of real values)^2)
 - Confusion Matrix란 무엇인가?
+  - 각 행은 예측된 분류를 의미하고, 각 열은 실제 분류를 의미하는 매트릭스를 말한다. 이 매트릭스를 통해 정확하게 예측한 경우가 얼마나 되고 잘못 예측한 경우가 얼마나 되는지 알 수 있다.
 - Accuracy / Precision / Recall / F-Score에 대해 설명하라.
+  - Accuracy = # of correct predictions / # of total cases, 예측된 데이터가 실제 데이터와 얼마나 가까운지
+  - Precision = # of correctly retrieved data / # of retrieved data, 도출한 데이터 중 얼마나 정확하게 맞추었는지
+  - Recall = # of correctly retrieved data / # of correct data, 정확히 도출해야 할 데이터들 중에서 얼마나 많이 도출했는지
+  - F1-Score = harmonic mean of precision and recall
+    - 2 x (precision x recall) / (precision + recall)
 - Class Imbalance 문제에 대해 설명하라.
+  - 클래스에 속하는 데이터의 수가 불균형한 문제를 말한다. 한 분류의 데이터가 다른 분류의 데이터 대비 그 수가 너무 많거나 적은 경우 Class imbalane라고 한다.
 - Accuracy를 사용하는 것은 언제 문제가 될 수 있는가?
+  - Class Imbalance 가 발생했을 경우 Accuracy를 쓰는 것은 좋지 못하다. 예를 들어서 실제로 False인 데이터는 매우 많지만, 실제로 True인 데이터는 매우 적은 케이스를 살펴보자. (특정인이 암 환자인지 판별하는 문제) 이러한 문제를 해결할 때 항상 False를 출력하는 모형을 쓰면 Accuracy는 매우 좋게 나온다. 그러나 이 모형은 실제로 True일 때도 False를 출력하게 된다. (False Negative) 즉 일반적인 데이터에 대해서 정확한 예측을 해낼 수 없다. Accuracy를 평가 메트릭으로 썼을 때 이 모형이 좋은 점수를 얻으나 실제로는 형편 없는 모형이 되므로 적합한 평가 메트릭으로 볼 수 없는 것이다.
 - Precision – Recall Curve를 그리는 방법에 대해 설명하라.
+  - (Precision, Recall) 페어를 여러 개 찾고, 해당 페어를 점으로 그래프 위에 그리면 Precision-Recall Curve를 그릴 수 있다. 모형이 분류를 판단하는 기준치 (threshold) 를 변경하면, 매 순간 precision, recall의 값이 계산되므로 각각에서 도출된 (precision, recall) 페어를 사용한다. 
+  - 여기서 False Positive가 없도록 기준치를 조정하면 Precision 값은 1이 되면서 Recall의 값은 통상적으로 낮아진다. (False Positive가 없도록 하려면 그 모형은 대부분의 데이터를 Negative로 예측하는 수 밖에 없다. 그 과정에서 False Negative의 수가 늘어나게 된다.) False Negative가 없도록 기준치를 조정하면 Recall 값은 1이 되면서 Precision의 값은 통상적으로 낮아진다. 이러한 경향 때문에 Precision - Recall Curve는 반달모양의 음의 상관관계 그래프를 띄는 경우가 많다.
 - 아래 그래프에서 모형 A와 모형 B 중 어떤 모형의 PR CURVE가 더 우수한지 판단하라.
+  - A의 모형이 PR Curve가 더 좋다. 현 그래프에서는 같은 prevision일 때 한 모형이 여러 개의 recall을 가지기도 
 
 ![](../images/ml-questions-01-08.png)
